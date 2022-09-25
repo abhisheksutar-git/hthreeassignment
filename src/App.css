@@ -1,3 +1,4 @@
+/* To Remove Standard Margin and Padding from Winodow View */
 body {
   padding: 0px;
   margin: 0px;
@@ -8,12 +9,6 @@ body {
 
 }
 
-.ContentAndHeade {
-
-  position: relative;
-  min-height: 100%;
-
-}
 
 
 

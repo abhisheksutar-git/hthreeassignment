@@ -1,156 +1,8 @@
-.main {
-    display: block;
-    position: relative ;
-}
-
-@media screen and (max-width : 768px) {
-    .main {
-        display: none;
-    }
-}
-
-
-.headerPatition {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    
-}
-
-
-
-
-
-
-.second-section-main {
-    background-color: rgb(236, 239, 241);
-    height: 100vw;
-    
-
-   
-}
-
-.second-section {
-    background: rgb(2,0,36);
-    background: linear-gradient(to right, rgb(63, 81, 181), rgb(100, 181, 246)) rgb(255, 255, 255);
-    height: 250px;
-}
-
-
-
-.second-content-section {
-    width: 85%;
-    margin: auto;
-   
-
-}
-.toalNumberSection {
-    display: flex;
-}
-
-
-
-
-
-
-
-
-
-.second-content-section {
-    padding-top: 20px;
-    color: white;
-}
-
-.firstContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 0px;
-}
-
-.firstContainer h6 h4 {
-        font-weight: 400px;
-        font-style: bold;
-        
-}
-.firstContainer h4 {
-    margin-top: -10px;
-}
-
-.tableBackground {
-    background-color: white;
-    box-shadow:  rgb(0 0 0 / 40%) 0px 2px 15px -3px;
-    min-height: 100%;
-
-}
-
-
-table  {
-    color: rgba(0,0,0,.87);
-    border: 1px solid rgba(34,36,38,.15);
-    border-radius: 5px;
-    height: 100%;
-   
-    
-}
-
-.nameWidth {
-    width: 10%;
-    text-align: left;
-    padding-left: 10px;
-}
-
-
-
-table thead th {
-    font-family: Lato , sans-serif;
-    font-weight: 400;
-    font-size: 14px;
-    text-align: right;
-
-}
-
-
-table tbody td {
-    text-align: right;
-    color: rgba(0,0,0,.87);
-}
-
-.tableHead {
-    background-color: rgb(250, 250, 250);
-    color: rgba(0, 0, 0, 0.6);
-    border: 1px solid rgba(34,36,38,.15);
-}
-
-
-.tablesSection {
-    display: flex;
-    flex-direction: column;
-    min-height: 100%;
-    
-}
-
-.buttonSection {
-    margin-top: 30px;
-    display: flex;
-    justify-content: center;
-    
-}
-
-
-
-
-
 /* Mobile View Market Cap  */
 
 .mobileviewMarketCap {
     display: none;
 }
-
-
-
-
 
 @media screen and ( max-width : 768px ) {
     .mobileviewMarketCap {
@@ -201,6 +53,160 @@ table tbody td {
     justify-content: space-between;
     color: white;
 }
+
+
+
+/* Main DeskStop Header Section  */
+
+.main {
+    display: block;
+    position: relative ;
+    background-color: rgb(236, 239, 241);
+}
+
+@media screen and (max-width : 768px) {
+    .main {
+        display: none;
+    }
+}
+
+
+.headerPatition {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+}
+
+
+
+/* Second Setion Gradient Background  */
+
+.second-section {
+    background: rgb(2,0,36);
+    background: linear-gradient(to right, rgb(63, 81, 181), rgb(100, 181, 246)) rgb(255, 255, 255);
+    height: 250px;
+   
+}
+
+
+.second-content-section {
+    width: 85%;
+    margin: auto;
+   
+
+}
+.toalNumberSection {
+    display: flex;
+}
+
+
+
+.second-content-section {
+    padding-top: 20px;
+    color: white;
+}
+
+.firstContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0px;
+}
+
+.firstContainer h6 h4 {
+        font-weight: 400px;
+        font-style: bold;
+        
+}
+.firstContainer h4 {
+    margin-top: -10px;
+}
+
+
+/* Table Styling Code  */
+
+.thirdTableSection {
+    width: 90%;
+    margin: auto;
+    margin-top: -160px;
+    
+}
+
+
+@media screen and (max-width : 990px ) {
+    .thirdTableSection {
+        margin-top: -110px;
+    }
+    
+}
+
+.tableBackground {
+    background-color: white;
+    box-shadow:  rgb(0 0 0 / 40%) 0px 2px 15px -3px;
+    min-height: 100%;
+}
+
+
+table  {
+    color: rgba(0,0,0,.87);
+    border: 1px solid rgba(34,36,38,.15);
+    border-radius: 5px;
+    height: 100%;
+}
+
+.nameWidth {
+    width: 10%;
+    text-align: left;
+    padding-left: 10px;
+}
+
+
+table thead th {
+    font-family: Lato , sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    text-align: right;
+}
+
+
+table tbody td {
+    text-align: right;
+    color: rgba(0,0,0,.87);
+}
+
+.tableHead {
+    background-color: rgb(250, 250, 250);
+    color: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(34,36,38,.15);
+}
+
+
+.tablesSection {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    
+}
+
+
+/* Last Button Section  */
+.buttonSection {
+    padding-top: 40px;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 30px;
+    background-color:  rgb(236, 239, 241);
+    margin-top: -20px;
+    
+    
+}
+
+
+
+
+
 
 
 

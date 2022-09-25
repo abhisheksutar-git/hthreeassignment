@@ -11,11 +11,13 @@
 
 }
 
+/* Added Trasnform Trasnform Property to Slide Sidebar  */
 .sidebar-open {
     transform: translateX(0%);
 
 }
 
+/* Inside Slidebar Styling  */
 .sidebarInside {
     display: flex;
     flex-direction: column;
@@ -36,6 +38,8 @@
     font-size: 14px;
 }
 
+
+/* Button Style Code  */
 .buttonStyle {
     border: none;
     background-color:rgb(24, 198, 131);
@@ -49,6 +53,8 @@
     
 }
 
+
+/* Addition class added to first div to show its is .selected by changing background  */
 .selected {
     background-color: #f8f9fa;
     width: 100%;

@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 
 
+
 const totalNumber = [
   {
       id : 0,
@@ -43,104 +44,89 @@ export default function MarketCap() {
   const [ apidata , setapiData ] = useState([])
   const [ limit , setlimit  ] = useState(10)
  
+//  Fetched Data Using Axios NPM 
+    const getDataFromApi = () => {
+        axios.get(`https://api.coincap.io/v2/assets?page=1&limit=${limit}`)
+        .then((response) => {
+            return  setapiData(response.data.data) 
+        })
+    }
 
- const getDataFromApi = () => {
-     axios.get(`https://api.coincap.io/v2/assets?page=1&limit=${limit}`)
-     .then((response) => {
-         return  setapiData(response.data.data) 
-     })
- }
+// UseEffect to Fetch Data again When View More is Clicked and limit state changes  
+    useEffect(() => {
+        getDataFromApi()
+    }, [limit])
 
- console.log(apidata)
+    console.log(limit)
 
-
- useEffect(() => {
-     getDataFromApi()
- }, [limit])
-
- console.log(limit)
-
-
- const onClickViewMore = () => {
-     return (
-         setlimit((prev) => {
-             return (
-                 prev + 10
-             )
-         })
-     )
- }
+// When View More Clicked to Show next data We are adding  x Number 
+    const onClickViewMore = () => {
+        return (
+            setlimit((prev) => {
+                return (
+                    prev + 10
+                )
+            })
+        )
+    }
 
 
 
 
   return (
-    <>
-
-              
-
-
+    <>          
+                {/* Mobile View Drop Down  */}
                 <div class="dropdown">
-                    <button class="btn btn-secondary mobileviewMarketCap " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <div className='dropDownList'>
-                            <div>
-                                Market Snapshort 
+                        <button class="btn btn-secondary mobileviewMarketCap " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div className='dropDownList'>
+                                <div>
+                                    Market Snapshort 
+                                </div>
+                                <div>
+                                <i class="fa-sharp fa-solid fa-caret-down"></i>
+                                </div>
                             </div>
-                            <div>
-                            <i class="fa-sharp fa-solid fa-caret-down"></i>
-                            </div>
-                        </div>
-                    </button>
-                    <ul class="dropdown-menu backgroundChange " aria-labelledby="dropdownMenuButton1">
-                        
+                        </button>
 
+
+                        <ul class="dropdown-menu backgroundChange " aria-labelledby="dropdownMenuButton1">
                             {
                                 totalNumber.map((eachValue) => {
-                                    return (
+                                        return (
 
-                                        <li><a class="dropdown-item" href="#i">
-                                        <div className='dropDownList' >
-                                            <div>
-                                                    {eachValue.cname} :
+                                            <li><a class="dropdown-item" href="#i">
+                                            <div className='dropDownList' >
+                                                <div>
+                                                        {eachValue.cname} :
+                                                </div>
+                                                <div>
+                                                        {eachValue.cvalue}
+                                                </div>
                                             </div>
-                                            <div>
-                                                    {eachValue.cvalue}
-                                            </div>
-                                        </div>
-                                        </a></li>
+                                            </a></li>
 
-                                    )
+                                        )
                                 })
                             }
+                        </ul>
+                </div>
 
 
-
-
-                        
-                    </ul>
-                 </div>
-
-
-
-                 <div className='mobileViewtable' >
-                 <table class="table tableBackground">
-                                        <thead className='tableHead'>
-                                            <tr>
-                                            
-                                            <th colspan="2" className='nameWidth'>Name</th>
-                                            <th scope="col">Price</th>
-                                            <th scope="col">Volume (24hr)</th>
-                                            
-                                            
-                                            </tr>
-                                        </thead>
-
-                                        {
-                                            apidata.map((eachData) => {
-                                                return (    
-                                                    <tbody>
-                                                    <tr className='right aligned'>
-                                                    
+                {/* Mobile View Three Column Table  */}
+                <div className='mobileViewtable' >
+                    <table class="table tableBackground">
+                        <thead className='tableHead'>
+                            <tr>
+                                <th colspan="2" className='nameWidth'>Name</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Volume (24hr)</th>
+                            </tr>
+                        </thead>
+                                 {
+                                  apidata.map((eachData) => {
+                                        return (    
+                                            <tbody>
+                                                <tr className='right aligned'>
                                                     <td colspan=" 2" className='nameWidth'  >
                                                         <div className='nameDevider'>
                                                             <div> <img src={`https://assets.coincap.io/assets/icons/${eachData.symbol.toLowerCase()}%402x.png`} alt="" /> </div>
@@ -148,124 +134,95 @@ export default function MarketCap() {
                                                         </div>
                                                     </td>
                                                     <td>{ parseFloat(eachData.priceUsd).toFixed(2) }</td>
-                                                    
                                                     <td> { parseFloat(eachData.changePercent24Hr).toFixed(2)  } </td>
-                                                    </tr>
+                                                </tr>
 
-                                                </tbody>
-
+                                            </tbody>
                                                 )
-                                            })
-                                        }
-                                        
-                                    </table>
-                 </div>
+                                        })
+                                 }      
+                    </table>
+                </div>
 
-
-
-
-
-            <div className='main'>
-
-                <section >
-                  <div className='second-section-main' >
-                        <div className='second-section'>
-                        <div className='second-content-section' >
-                                <div className='container' >
-                                    <div className="row" >
-                                        
-
-                                        {
-                                            totalNumber.map((eachElement) => {
-                                                return (
-                                                    <div className='col-lg-2 col-sm-4' key={eachElement.id} >
-                                                        <div className='firstContainer' >
-                                                            <h6>{eachElement.cname}</h6>
-                                                            <h4>{eachElement.cvalue}</h4>
-                                                        </div>
-                                                    </div>        
-
-                                                )
-                                            } )
-                                        }
-
-
-                                    </div>
-
-                                
-
+                {/* Dekstop Main Section */}
+                <div className='main'>
+                    <section >
+                        <div className='second-section-main' >
+                            <div className='second-section'>
+                                <div className='second-content-section' >
+                                        <div className='container' >
+                                            <div className="row" >
+                                                {
+                                                    totalNumber.map((eachElement) => {
+                                                        return (
+                                                            <div className='col-lg-2 col-sm-4' key={eachElement.id} >
+                                                                <div className='firstContainer' >
+                                                                    <h6>{eachElement.cname}</h6>
+                                                                    <h4>{eachElement.cvalue}</h4>
+                                                                </div>
+                                                            </div>    
+                                                        )
+                                                    } )
+                                                }
+                                            </div>
+                                        </div>
                                 </div>
-
-                                <div className='tablesSection' >
+                            </div>
+                        </div>
+                        
+                        {/* Table Third Section  */}
+                        <div className='thirdTableSection' >
+                            <div className='tablesContainer' >
                                     <table class="table tableBackground">
                                         <thead className='tableHead'>
                                             <tr>
-                                            <th scope="col">Rank</th>
-                                            <th colspan="2" className='nameWidth'>Name</th>
-                                            <th scope="col">Price</th>
-                                            <th scope='col' >Market Cap </th>
-                                            <th scope="col">VWAP (24hr)</th>
-                                            <th scope="col">Supply</th>
-                                            <th scope="col">Volume (24hr)</th>
-                                            <th scope="col">Change (24hr)</th>
-                                            
+                                                <th scope="col">Rank</th>
+                                                <th colspan="2" className='nameWidth'>Name</th>
+                                                <th scope="col">Price</th>
+                                                <th scope='col' >Market Cap </th>
+                                                <th scope="col">VWAP (24hr)</th>
+                                                <th scope="col">Supply</th>
+                                                <th scope="col">Volume (24hr)</th>
+                                                <th scope="col">Change (24hr)</th>  
                                             </tr>
                                         </thead>
 
-                                        {
-                                            apidata.map((eachData) => {
-                                                return (    
-                                                    <tbody>
-                                                    <tr className='right aligned'>
-                                                    <td >{eachData.rank}</td>
-                                                    <td colspan=" 2" className='nameWidth'  >
-                                                        <div className='nameDevider'>
-                                                            <div> <img src={`https://assets.coincap.io/assets/icons/${eachData.symbol.toLowerCase()}%402x.png`} alt="" /> </div>
-                                                            <div>{eachData.name} <p>{eachData.symbol}</p></div>
-                                                        </div>
-                                                    </td>
-                                                    <td>{ parseFloat(eachData.priceUsd).toFixed(2) }</td>
-                                                    <td> {  parseFloat(((eachData.marketCapUsd )/ 1000000000)).toFixed(2)  }b</td>
-                                                    <td>{ parseFloat(eachData.vwap24Hr).toFixed(2) } </td>
-                                                    <td> { parseFloat( ((eachData.supply )/ 1000000000)).toFixed(2)  } b </td>
-                                                    <td>  {   parseFloat( ((eachData.volumeUsd24Hr )/ 1000000000)).toFixed(2)  } b  </td>
-                                                    <td> { parseFloat(eachData.changePercent24Hr).toFixed(2)  } </td>
-                                                    </tr>
+                                                {
+                                                    apidata.map((eachData) => {
+                                                        return (    
+                                                            <tbody>
+                                                            <tr className='right aligned'>
+                                                            <td >{eachData.rank}</td>
+                                                            <td colspan=" 2" className='nameWidth'  >
+                                                                <div className='nameDevider'>
+                                                                    <div> <img src={`https://assets.coincap.io/assets/icons/${eachData.symbol.toLowerCase()}%402x.png`} alt="" /> </div>
+                                                                    <div>{eachData.name} <p>{eachData.symbol}</p></div>
+                                                                </div>
+                                                            </td>
+                                                            <td>{ parseFloat(eachData.priceUsd).toFixed(2) }</td>
+                                                            <td> {  parseFloat(((eachData.marketCapUsd )/ 1000000000)).toFixed(2)  }b</td>
+                                                            <td>{ parseFloat(eachData.vwap24Hr).toFixed(2) } </td>
+                                                            <td> { parseFloat( ((eachData.supply )/ 1000000000)).toFixed(2)  } b </td>
+                                                            <td>  {   parseFloat( ((eachData.volumeUsd24Hr )/ 1000000000)).toFixed(2)  } b  </td>
+                                                            <td> { parseFloat(eachData.changePercent24Hr).toFixed(2)  } </td>
+                                                            </tr>
 
-                                                </tbody>
+                                                        </tbody>
 
-                                                )
-                                            })
-                                        }
-                                        
+                                                        )
+                                                    })
+                                                }
+                                                
                                     </table>
-                                </div>
-
-
-                            <div className='buttonSection'>
-                                    <button className='connect' onClick={onClickViewMore} >View More</button>
-                            </div>
+                            </div>         
                         </div>
-                        </div>
-                        
-                  </div>
-                </section>
-
-            </div>
-
-
-
-
-         
-
-
-           
-
-
-
-
-
-
+                    </section>
+                </div>
+                
+                {/* Last Button Section  */}
+                <div className='buttonSection'>
+                    <button className='connect' onClick={onClickViewMore} >View More</button>
+                </div>
     </>
   )
 }

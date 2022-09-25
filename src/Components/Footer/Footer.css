@@ -1,40 +1,44 @@
 .footerTest {
-    position: relative  ;
+    position: relative;
     bottom: 0;
-    right: 0;
     left: 0;
     width: 100%;
     height: 250px;
-    overflow-x: hidden;
+   
 }
 
-
+/* Footer Background Color  */
 .footereSection {
     background: linear-gradient(to right, rgb(63, 81, 181), rgb(100, 181, 246)) rgb(255, 255, 255);
     height: 250px;
-    overflow-x: hidden;
-    
-    
-
+   
 }
 
+@media screen and (max-width : 768px )  {
+    .footereSection {
+        height : 36 0px
+    }
+}
 
+/* Footer Content Layout */
 .footer-content-section {
+    
     width: 90%;
     margin: auto;
     padding-top: 35px;
-    height: 250px;
-    
     color: #ccdded;
     font-size: 14px;
     
 }
 
+/* Footer Content Heading  */
 .footer-content-section h6 {
     font-weight: bold;
     color: white;
 }
 
+
+/* Footer First Section Listing Modify  */
 .footer-content-section ul li {
     list-style: none;
     text-align: start;
@@ -44,6 +48,8 @@
     
 }
 
+
+/* Footer Icon Styling   */
 .footer-content-section i {
     margin-right: 10px;
     font-size: 20px;
