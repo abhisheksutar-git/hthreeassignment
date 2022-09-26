@@ -72,12 +72,12 @@ export default function Footer() {
                                         <h6>COIL APP AVAILABLE ON </h6>
                                     </div>
 
-                                    <div>
-                                        <img src="#i" alt="Google Play" />
+                                    <div className='iconmargin' >
+                                        <img src="https://i.postimg.cc/GmfqYdLx/apple-store.png"  alt="Google Play" />
                                     </div>
 
                                     <div>
-                                        <img src="#i" alt="playstore" />
+                                        <img src="https://i.postimg.cc/dQnRrwnZ/google-play.png" alt="playstore" />
                                     </div>
                             </div>
                         </div>

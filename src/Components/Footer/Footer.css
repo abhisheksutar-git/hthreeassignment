@@ -16,7 +16,7 @@
 
 @media screen and (max-width : 768px )  {
     .footereSection {
-        height : 36 0px
+        height : 400px
     }
 }
 
@@ -53,5 +53,9 @@
 .footer-content-section i {
     margin-right: 10px;
     font-size: 20px;
+}
+
+.iconmargin {
+    margin-bottom: 8px;
 }
 
